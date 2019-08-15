@@ -1,0 +1,78 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>NimbusBridge - nimbus</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">nimbus</a>&nbsp;/&nbsp;<a href="../index.html">com.salesforce.nimbus</a>&nbsp;/&nbsp;<a href="./index.html">NimbusBridge</a><br/>
+<br/>
+<h1>NimbusBridge</h1>
+<code><span class="keyword">class </span><span class="identifier">NimbusBridge</span></code>
+<h3>Constructors</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-init-.html">&lt;init&gt;</a></p>
+</td>
+<td>
+<code><span class="identifier">NimbusBridge</span><span class="symbol">(</span><span class="identifier" id="com.salesforce.nimbus.NimbusBridge$<init>(kotlin.String)/appUrl">appUrl</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span></code></td>
+</tr>
+</tbody>
+</table>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="add.html">add</a></p>
+</td>
+<td>
+<code><span class="keyword">fun </span><span class="identifier">add</span><span class="symbol">(</span><span class="keyword">vararg</span> <span class="identifier" id="com.salesforce.nimbus.NimbusBridge$add(kotlin.Array((com.salesforce.nimbus.NimbusBinder)))/binder">binder</span><span class="symbol">:</span>&nbsp;<a href="../-nimbus-binder/index.html"><span class="identifier">NimbusBinder</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Adds a <a href="../-nimbus-binder/index.html">NimbusBinder</a> to the bridge.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="attach.html">attach</a></p>
+</td>
+<td>
+<code><span class="keyword">fun </span><span class="identifier">attach</span><span class="symbol">(</span><span class="identifier" id="com.salesforce.nimbus.NimbusBridge$attach(android.webkit.WebView)/webView">webView</span><span class="symbol">:</span>&nbsp;<span class="identifier">WebView</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Attaches the bridge to the provided <a href="attach.html#com.salesforce.nimbus.NimbusBridge$attach(android.webkit.WebView)/webView">webView</a>, initializing each extension and loading the
+<a href="#">appUrl</a>.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="detach.html">detach</a></p>
+</td>
+<td>
+<code><span class="keyword">fun </span><span class="identifier">detach</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Detaches the bridge performing any necessary cleanup.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="make-callback.html">makeCallback</a></p>
+</td>
+<td>
+<code><span class="keyword">fun </span><span class="identifier">makeCallback</span><span class="symbol">(</span><span class="identifier" id="com.salesforce.nimbus.NimbusBridge$makeCallback(kotlin.String)/callbackId">callbackId</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="../-callback/index.html"><span class="identifier">Callback</span></a><span class="symbol">?</span></code>
+<p>Creates and returns a Callback object that can be passed as an argument to
+a subsequent JavascriptInterface bound method.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="native-extension-names.html">nativeExtensionNames</a></p>
+</td>
+<td>
+<code><span class="keyword">fun </span><span class="identifier">nativeExtensionNames</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a></code>
+<p>Return the names of all connected extensions so they can be processed by the
+JavaScript runtime code.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

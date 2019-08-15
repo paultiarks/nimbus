@@ -1,0 +1,86 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>DeviceExtension - nimbus</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">nimbus</a>&nbsp;/&nbsp;<a href="../index.html">com.salesforce.nimbus.extensions</a>&nbsp;/&nbsp;<a href="./index.html">DeviceExtension</a><br/>
+<br/>
+<h1>DeviceExtension</h1>
+<code><span class="keyword">class </span><span class="identifier">DeviceExtension</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="../../com.salesforce.nimbus/-nimbus-extension/index.html"><span class="identifier">NimbusExtension</span></a></code>
+<h3>Types</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-device-info/index.html">DeviceInfo</a></p>
+</td>
+<td>
+<code><span class="keyword">class </span><span class="identifier">DeviceInfo</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="../../com.salesforce.nimbus/-j-s-o-n-serializable/index.html"><span class="identifier">JSONSerializable</span></a></code></td>
+</tr>
+</tbody>
+</table>
+<h3>Constructors</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-init-.html">&lt;init&gt;</a></p>
+</td>
+<td>
+<code><span class="identifier">DeviceExtension</span><span class="symbol">(</span><span class="identifier" id="com.salesforce.nimbus.extensions.DeviceExtension$<init>(android.content.Context)/context">context</span><span class="symbol">:</span>&nbsp;<span class="identifier">Context</span><span class="symbol">)</span></code></td>
+</tr>
+</tbody>
+</table>
+<h3>Properties</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="cached-device-info.html">cachedDeviceInfo</a></p>
+</td>
+<td>
+<code><span class="keyword">val </span><span class="identifier">cachedDeviceInfo</span><span class="symbol">: </span><a href="-device-info/index.html"><span class="identifier">DeviceExtension.DeviceInfo</span></a></code></td>
+</tr>
+</tbody>
+</table>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="get-device-info.html">getDeviceInfo</a></p>
+</td>
+<td>
+<code><span class="keyword">fun </span><span class="identifier">getDeviceInfo</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="-device-info/index.html"><span class="identifier">DeviceExtension.DeviceInfo</span></a></code></td>
+</tr>
+</tbody>
+</table>
+<h3>Inherited Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="../../com.salesforce.nimbus/-nimbus-extension/cleanup.html">cleanup</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">cleanup</span><span class="symbol">(</span><span class="identifier" id="com.salesforce.nimbus.NimbusExtension$cleanup(android.webkit.WebView)/webView">webView</span><span class="symbol">:</span>&nbsp;<span class="identifier">WebView</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Do any cleanup of the <a href="#">WebView</a> necessary for this extension. Do not remove any javascript
+interfaces from the <a href="#">WebView</a> here. They will be removed by the <a href="../../com.salesforce.nimbus/-nimbus-bridge/index.html">NimbusBridge</a>.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="../../com.salesforce.nimbus/-nimbus-extension/customize.html">customize</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">customize</span><span class="symbol">(</span><span class="identifier" id="com.salesforce.nimbus.NimbusExtension$customize(android.webkit.WebView)/webView">webView</span><span class="symbol">:</span>&nbsp;<span class="identifier">WebView</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Customize the <a href="#">WebView</a> prior to the extension being initialized. Do not add any javascript
+interfaces to the <a href="#">WebView</a> here. They will be added by the <a href="../../com.salesforce.nimbus/-nimbus-bridge/index.html">NimbusBridge</a>.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

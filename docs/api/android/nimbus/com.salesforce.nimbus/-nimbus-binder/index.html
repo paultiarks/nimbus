@@ -1,0 +1,58 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>NimbusBinder - nimbus</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">nimbus</a>&nbsp;/&nbsp;<a href="../index.html">com.salesforce.nimbus</a>&nbsp;/&nbsp;<a href="./index.html">NimbusBinder</a><br/>
+<br/>
+<h1>NimbusBinder</h1>
+<code><span class="keyword">interface </span><span class="identifier">NimbusBinder</span></code>
+<p>Binder interface for the generated <a href="../-nimbus-extension/index.html">NimbusExtension</a> binder class.</p>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="get-extension.html">getExtension</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">getExtension</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="../-nimbus-extension/index.html"><span class="identifier">NimbusExtension</span></a></code>
+<p>Returns the <a href="../-nimbus-extension/index.html">NimbusExtension</a> that this binder is bound to.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="get-extension-name.html">getExtensionName</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">getExtensionName</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a></code>
+<p>Returns the name of the extension which will be used as the javascript interface.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-web-view.html">setWebView</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">setWebView</span><span class="symbol">(</span><span class="identifier" id="com.salesforce.nimbus.NimbusBinder$setWebView(android.webkit.WebView)/webView">webView</span><span class="symbol">:</span>&nbsp;<span class="identifier">WebView</span><span class="symbol">?</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Sets the <a href="#">WebView</a> on the binder so it can make internal calls to it.</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Inheritors</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="../../com.salesforce.nimbus.extensions/-device-extension-binder/index.html">DeviceExtensionBinder</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">DeviceExtensionBinder</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="./index.html"><span class="identifier">NimbusBinder</span></a></code></td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

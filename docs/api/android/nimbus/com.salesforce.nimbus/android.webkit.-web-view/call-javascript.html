@@ -1,0 +1,28 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>callJavascript - nimbus</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">nimbus</a>&nbsp;/&nbsp;<a href="../index.html">com.salesforce.nimbus</a>&nbsp;/&nbsp;<a href="index.html">android.webkit.WebView</a>&nbsp;/&nbsp;<a href="./call-javascript.html">callJavascript</a><br/>
+<br/>
+<h1>callJavascript</h1>
+<a name="com.salesforce.nimbus$callJavascript(android.webkit.WebView, kotlin.String, kotlin.Array((com.salesforce.nimbus.JSONSerializable)), kotlin.Function1((kotlin.Any, kotlin.Unit)))"></a>
+<code><span class="keyword">fun </span><span class="identifier">WebView</span><span class="symbol">.</span><span class="identifier">callJavascript</span><span class="symbol">(</span><span class="identifier" id="com.salesforce.nimbus$callJavascript(android.webkit.WebView, kotlin.String, kotlin.Array((com.salesforce.nimbus.JSONSerializable)), kotlin.Function1((kotlin.Any, kotlin.Unit)))/name">name</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="com.salesforce.nimbus$callJavascript(android.webkit.WebView, kotlin.String, kotlin.Array((com.salesforce.nimbus.JSONSerializable)), kotlin.Function1((kotlin.Any, kotlin.Unit)))/args">args</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-array/index.html"><span class="identifier">Array</span></a><span class="symbol">&lt;</span><a href="../-j-s-o-n-serializable/index.html"><span class="identifier">JSONSerializable</span></a><span class="symbol">?</span><span class="symbol">&gt;</span>&nbsp;<span class="symbol">=</span>&nbsp;emptyArray()<span class="symbol">, </span><span class="identifier" id="com.salesforce.nimbus$callJavascript(android.webkit.WebView, kotlin.String, kotlin.Array((com.salesforce.nimbus.JSONSerializable)), kotlin.Function1((kotlin.Any, kotlin.Unit)))/completionHandler">completionHandler</span><span class="symbol">:</span>&nbsp;<span class="symbol">(</span><span class="symbol">(</span><span class="identifier">result</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">?</span><span class="symbol">)</span>&nbsp;<span class="symbol">-&gt;</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a><span class="symbol">)</span><span class="symbol">?</span>&nbsp;<span class="symbol">=</span>&nbsp;null<span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Asynchronously call a Javascript function. This method must be called on UI thread.</p>
+<h3>Parameters</h3>
+<p><a name="name"></a>
+<code>name</code> - Name of a function or a method on an object to call.  Fully qualify this name
+    by separating with a dot and do not need to add parenthesis. The function
+    to be performed in Javascript must already be defined and exist there.  Do not
+    pass a snippet of code to evaluate.</p>
+<p><a name="args"></a>
+<code>args</code> - Array of argument objects.  They will be Javascript stringified in this
+    method and be passed the function as specified in 'name'. If you are calling a
+    Javascript function that does not take any parameters pass empty array instead of nil.</p>
+<p><a name="completionHandler"></a>
+<code>completionHandler</code> - A block to invoke when script evaluation completes or fails. You do not
+    have to pass a closure if you are not interested in getting the callback.</p>
+</BODY>
+</HTML>

@@ -1,0 +1,145 @@
+{
+  "warnings": [
+    {
+      "file": "/Users/jforeman/Source/github/salesforce/nimbus/platforms/apple/Sources/Nimbus/Binder.swift",
+      "line": 10,
+      "symbol": "Binder",
+      "symbol_kind": "source.lang.swift.decl.protocol",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jforeman/Source/github/salesforce/nimbus/platforms/apple/Sources/Nimbus/Binder.swift",
+      "line": 11,
+      "symbol": "Binder.Target",
+      "symbol_kind": "source.lang.swift.decl.associatedtype",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jforeman/Source/github/salesforce/nimbus/platforms/apple/Sources/Nimbus/Binder.swift",
+      "line": 12,
+      "symbol": "Binder.target",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jforeman/Source/github/salesforce/nimbus/platforms/apple/Sources/Nimbus/Binder.swift",
+      "line": 14,
+      "symbol": "Binder.bind(_:as:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jforeman/Source/github/salesforce/nimbus/platforms/apple/Sources/Nimbus/Binder.swift",
+      "line": 17,
+      "symbol": "Binder",
+      "symbol_kind": "source.lang.swift.decl.extension",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jforeman/Source/github/salesforce/nimbus/platforms/apple/Sources/Nimbus/Connection.swift",
+      "line": 17,
+      "symbol": "Connection.Target",
+      "symbol_kind": "source.lang.swift.decl.typealias",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jforeman/Source/github/salesforce/nimbus/platforms/apple/Sources/Nimbus/Connection.swift",
+      "line": 137,
+      "symbol": "Connection.target",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jforeman/Source/github/salesforce/nimbus/platforms/apple/Sources/Nimbus/EncodableValue.swift",
+      "line": 18,
+      "symbol": "EncodableValue.void",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jforeman/Source/github/salesforce/nimbus/platforms/apple/Sources/Nimbus/EncodableValue.swift",
+      "line": 19,
+      "symbol": "EncodableValue.value(_:)",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jforeman/Source/github/salesforce/nimbus/platforms/apple/Sources/Nimbus/EncodableValue.swift",
+      "line": 20,
+      "symbol": "EncodableValue.array(_:)",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jforeman/Source/github/salesforce/nimbus/platforms/apple/Sources/Nimbus/Extensions/DeviceExtension.swift",
+      "line": 56,
+      "symbol": "DeviceExtension",
+      "symbol_kind": "source.lang.swift.decl.class",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jforeman/Source/github/salesforce/nimbus/platforms/apple/Sources/Nimbus/Extensions/DeviceExtension.swift",
+      "line": 57,
+      "symbol": "DeviceExtension.init()",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jforeman/Source/github/salesforce/nimbus/platforms/apple/Sources/Nimbus/Extensions/DeviceExtension.swift",
+      "line": 66,
+      "symbol": "DeviceExtension",
+      "symbol_kind": "source.lang.swift.decl.extension",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jforeman/Source/github/salesforce/nimbus/platforms/apple/Sources/Nimbus/Extensions/DeviceExtension.swift",
+      "line": 67,
+      "symbol": "DeviceExtension.bindToWebView(webView:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jforeman/Source/github/salesforce/nimbus/platforms/apple/Sources/Nimbus/NimbusBridge.swift",
+      "line": 10,
+      "symbol": "NimbusBridge",
+      "symbol_kind": "source.lang.swift.decl.class",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jforeman/Source/github/salesforce/nimbus/platforms/apple/Sources/Nimbus/NimbusBridge.swift",
+      "line": 11,
+      "symbol": "NimbusBridge.addExtension(ext:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jforeman/Source/github/salesforce/nimbus/platforms/apple/Sources/Nimbus/NimbusBridge.swift",
+      "line": 15,
+      "symbol": "NimbusBridge.addExtension(_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jforeman/Source/github/salesforce/nimbus/platforms/apple/Sources/Nimbus/NimbusBridge.swift",
+      "line": 19,
+      "symbol": "NimbusBridge.attach(to:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jforeman/Source/github/salesforce/nimbus/platforms/apple/Sources/Nimbus/NimbusExtension.swift",
+      "line": 10,
+      "symbol": "NimbusExtension",
+      "symbol_kind": "source.lang.swift.decl.protocol",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jforeman/Source/github/salesforce/nimbus/platforms/apple/Sources/Nimbus/NimbusExtension.swift",
+      "line": 11,
+      "symbol": "NimbusExtension.bindToWebView(webView:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    }
+  ],
+  "source_directory": "/Users/jforeman/Source/github/salesforce/nimbus/platforms/apple"
+}

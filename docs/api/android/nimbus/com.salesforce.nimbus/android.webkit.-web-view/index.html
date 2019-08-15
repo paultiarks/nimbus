@@ -1,0 +1,35 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>com.salesforce.nimbus.android.webkit.WebView - nimbus</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">nimbus</a>&nbsp;/&nbsp;<a href="../index.html">com.salesforce.nimbus</a>&nbsp;/&nbsp;<a href="./index.html">android.webkit.WebView</a><br/>
+<br/>
+<h3>Extensions for android.webkit.WebView</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="broadcast-message.html">broadcastMessage</a></p>
+</td>
+<td>
+<code><span class="keyword">fun </span><span class="identifier">WebView</span><span class="symbol">.</span><span class="identifier">broadcastMessage</span><span class="symbol">(</span><span class="identifier" id="com.salesforce.nimbus$broadcastMessage(android.webkit.WebView, kotlin.String, com.salesforce.nimbus.JSONSerializable, kotlin.Function1((kotlin.Int, kotlin.Unit)))/name">name</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="com.salesforce.nimbus$broadcastMessage(android.webkit.WebView, kotlin.String, com.salesforce.nimbus.JSONSerializable, kotlin.Function1((kotlin.Int, kotlin.Unit)))/arg">arg</span><span class="symbol">:</span>&nbsp;<a href="../-j-s-o-n-serializable/index.html"><span class="identifier">JSONSerializable</span></a><span class="symbol">?</span>&nbsp;<span class="symbol">=</span>&nbsp;null<span class="symbol">, </span><span class="identifier" id="com.salesforce.nimbus$broadcastMessage(android.webkit.WebView, kotlin.String, com.salesforce.nimbus.JSONSerializable, kotlin.Function1((kotlin.Int, kotlin.Unit)))/completionHandler">completionHandler</span><span class="symbol">:</span>&nbsp;<span class="symbol">(</span><span class="symbol">(</span><span class="identifier">result</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a><span class="symbol">)</span>&nbsp;<span class="symbol">-&gt;</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a><span class="symbol">)</span><span class="symbol">?</span>&nbsp;<span class="symbol">=</span>&nbsp;null<span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Asynchronously broadcast a message to subscribers listening on Javascript side.  Message can be
+delivered with an argument so that subscriber can use that pass useful data. This method must be called on UI thread.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="call-javascript.html">callJavascript</a></p>
+</td>
+<td>
+<code><span class="keyword">fun </span><span class="identifier">WebView</span><span class="symbol">.</span><span class="identifier">callJavascript</span><span class="symbol">(</span><span class="identifier" id="com.salesforce.nimbus$callJavascript(android.webkit.WebView, kotlin.String, kotlin.Array((com.salesforce.nimbus.JSONSerializable)), kotlin.Function1((kotlin.Any, kotlin.Unit)))/name">name</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="com.salesforce.nimbus$callJavascript(android.webkit.WebView, kotlin.String, kotlin.Array((com.salesforce.nimbus.JSONSerializable)), kotlin.Function1((kotlin.Any, kotlin.Unit)))/args">args</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-array/index.html"><span class="identifier">Array</span></a><span class="symbol">&lt;</span><a href="../-j-s-o-n-serializable/index.html"><span class="identifier">JSONSerializable</span></a><span class="symbol">?</span><span class="symbol">&gt;</span>&nbsp;<span class="symbol">=</span>&nbsp;emptyArray()<span class="symbol">, </span><span class="identifier" id="com.salesforce.nimbus$callJavascript(android.webkit.WebView, kotlin.String, kotlin.Array((com.salesforce.nimbus.JSONSerializable)), kotlin.Function1((kotlin.Any, kotlin.Unit)))/completionHandler">completionHandler</span><span class="symbol">:</span>&nbsp;<span class="symbol">(</span><span class="symbol">(</span><span class="identifier">result</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">?</span><span class="symbol">)</span>&nbsp;<span class="symbol">-&gt;</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a><span class="symbol">)</span><span class="symbol">?</span>&nbsp;<span class="symbol">=</span>&nbsp;null<span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Asynchronously call a Javascript function. This method must be called on UI thread.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

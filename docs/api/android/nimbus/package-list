@@ -1,0 +1,13 @@
+$dokka.format:html
+$dokka.linkExtension:html
+$dokka.location:com.salesforce.nimbus$broadcastMessage(android.webkit.WebView, kotlin.String, com.salesforce.nimbus.JSONSerializable, kotlin.Function1((kotlin.Int, kotlin.Unit)))com.salesforce.nimbus/android.webkit.-web-view/broadcast-message.html
+$dokka.location:com.salesforce.nimbus$callJavascript(android.webkit.WebView, kotlin.String, kotlin.Array((com.salesforce.nimbus.JSONSerializable)), kotlin.Function1((kotlin.Any, kotlin.Unit)))com.salesforce.nimbus/android.webkit.-web-view/call-javascript.html
+$dokka.location:com.salesforce.nimbus$fromStream(kotlin.String.Companion, java.io.InputStream)com.salesforce.nimbus/kotlin.-string/from-stream.html
+$dokka.location:com.salesforce.nimbus$toJSONSerializable(java.lang.Integer)com.salesforce.nimbus/java.lang.-integer/to-j-s-o-n-serializable.html
+$dokka.location:com.salesforce.nimbus$toJSONSerializable(kotlin.Boolean)com.salesforce.nimbus/kotlin.-boolean/to-j-s-o-n-serializable.html
+$dokka.location:com.salesforce.nimbus$toJSONSerializable(kotlin.Double)com.salesforce.nimbus/kotlin.-double/to-j-s-o-n-serializable.html
+$dokka.location:com.salesforce.nimbus$toJSONSerializable(kotlin.Int)com.salesforce.nimbus/kotlin.-int/to-j-s-o-n-serializable.html
+$dokka.location:com.salesforce.nimbus$toJSONSerializable(kotlin.Long)com.salesforce.nimbus/kotlin.-long/to-j-s-o-n-serializable.html
+$dokka.location:com.salesforce.nimbus$toJSONSerializable(kotlin.String)com.salesforce.nimbus/kotlin.-string/to-j-s-o-n-serializable.html
+com.salesforce.nimbus
+com.salesforce.nimbus.extensions

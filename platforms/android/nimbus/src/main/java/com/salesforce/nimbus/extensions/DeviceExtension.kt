@@ -2,6 +2,7 @@ package com.salesforce.nimbus.extensions
 
 import android.content.Context
 import android.content.pm.PackageManager
+import android.util.Log
 import com.salesforce.nimbus.Extension
 import com.salesforce.nimbus.ExtensionMethod
 import com.salesforce.nimbus.JSONSerializable
@@ -45,5 +46,16 @@ class DeviceExtension(context: Context) : NimbusExtension {
     @ExtensionMethod
     fun getDeviceInfo(): DeviceInfo {
         return cachedDeviceInfo
+    }
+
+    @ExtensionMethod(promisifyClosure = true)
+    fun callbackWithSinglePrimitiveParam(arg: (param0: Int) -> Unit) {
+        arg(777)
+    }
+
+    @ExtensionMethod(promisifyClosure = true)
+    fun callbackWithSinglePrimitiveParam222(sss: String, arg: (param0: Int) -> Unit) {
+        Log.v(sss, sss)
+        arg(777)
     }
 }

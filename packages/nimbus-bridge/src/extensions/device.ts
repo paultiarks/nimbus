@@ -11,21 +11,23 @@
  * which the application is executing.
  */
 export interface DeviceExtension {
-    /// Return information about the current device
-    getDeviceInfo(): Promise<DeviceInfo>;
+  /// Return information about the current device
+  getDeviceInfo(): Promise<DeviceInfo>;
+  callbackWithSinglePrimitiveParam(): Promise<number>;
+  getMethodsWithClosuresToPromisify(): Promise<string[]>;
 }
 
 export interface DeviceInfo {
-    /// The device operating system
-    platform: string;
-    /// The device operating system version
-    platformVersion: string;
-    /// The device manufacturer
-    manufacturer: string;
-    /// The device model
-    model: string;
-    /// The version of the application
-    appVersion: string;
+  /// The device operating system
+  platform: string;
+  /// The device operating system version
+  platformVersion: string;
+  /// The device manufacturer
+  manufacturer: string;
+  /// The device model
+  model: string;
+  /// The version of the application
+  appVersion: string;
 }
 
 declare const DeviceExtension: DeviceExtension;

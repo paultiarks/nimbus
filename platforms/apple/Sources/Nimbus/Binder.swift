@@ -5,9 +5,14 @@
 // For full license text, see the LICENSE file in the repo root or https://opensource.org/licenses/BSD-3-Clause
 //
 
+public enum TrailingClosure {
+  case callback, promise
+}
+
 public protocol Binder {
     associatedtype Target
     var target: Target { get }
 
-    func bind(_ callable: Callable, as name: String)
+    func bind(_ callable: Callable, as name: String, closureTransform: TrailingClosure)
+    //func bind(_ callable: Callable, as name: String)
 }

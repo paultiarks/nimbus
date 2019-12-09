@@ -43,11 +43,13 @@ public class Connection<C>: Binder {
                 let params = message.body as? NSDictionary,
                 let method = params["method"] as? String,
                 let args = params["args"] as? [Any],
-                let promiseId = params["promiseId"] as? String else {
+                //let promiseId = params["promiseId"] as? String else {
+                let promiseId = params["promiseId"] as? String,
+                let promisifyCallback = params["promisifyCallback"] as? Bool else {
                 return
             }
 
-            connection.call(method, args: args, promise: promiseId)
+            connection.call(method, args: args, promise: promiseId, promisifyCallback: promisifyCallback)
         }
 
         let connection: Connection
@@ -56,39 +58,81 @@ public class Connection<C>: Binder {
     /**
      Bind the callable object to a function `name` under this conenctions namespace.
      */
-    public func bind(_ callable: Callable, as name: String) {
+    public func bind(_ callable: Callable, as name: String, closureTransform: TrailingClosure) {
         bindings[name] = callable
-        let stubScript = """
-        \(namespace) = window.\(namespace) || {};
-        \(namespace).\(name) = function() {
-            let functionArgs = nimbus.cloneArguments(arguments);
-            return new Promise(function(resolve, reject) {
-                var promiseId = nimbus.uuidv4();
-                nimbus.promises[promiseId] = {resolve, reject};
-
-                window.webkit.messageHandlers.\(namespace).postMessage({
-                    method: '\(name)',
-                    args: functionArgs,
-                    promiseId: promiseId
-                });
-            });
-        };
-        true;
-        """
-
+//Good
+        //        let stubScript = """
+        //        \(namespace) = window.\(namespace) || {};
+        //        \(namespace).\(name) = function() {
+        //            let functionArgs = nimbus.cloneArguments(arguments);
+        //            return new Promise(function(resolve, reject) {
+        //                var promiseId = nimbus.uuidv4();
+        //                nimbus.promises[promiseId] = {resolve, reject};
+        //
+        //                window.webkit.messageHandlers.\(namespace).postMessage({
+        //                    method: '\(name)',
+        //                    args: functionArgs,
+        //                    promiseId: promiseId
+        //                });
+        //            });
+        //        };
+        //        true;
+        //        """
+        var stubScript = ""
+        if name == "callbackWithSinglePrimitiveParam" {
+                    stubScript = """
+                    \(namespace) = window.\(namespace) || {};
+                    \(namespace).\(name) = function() {
+                        let functionArgs = nimbus.cloneArguments(arguments);
+                        return new Promise(function(resolve, reject) {
+                            var promiseId = nimbus.uuidv4();
+                            nimbus.promises[promiseId] = {resolve, reject};
+                            window.webkit.messageHandlers.\(namespace).postMessage({
+                                method: '\(name)',
+                                args: functionArgs,
+                                promiseId: promiseId,
+                                promisifyCallback: true
+                            });
+                        });
+                    };
+                    true;
+                    """
+        } else {
+                    stubScript = """
+                    \(namespace) = window.\(namespace) || {};
+                    \(namespace).\(name) = function() {
+                        let functionArgs = nimbus.cloneArguments(arguments);
+                        return new Promise(function(resolve, reject) {
+                            var promiseId = nimbus.uuidv4();
+                            nimbus.promises[promiseId] = {resolve, reject};
+                            window.webkit.messageHandlers.\(namespace).postMessage({
+                                method: '\(name)',
+                                args: functionArgs,
+                                promiseId: promiseId,
+                                promisifyCallback: false
+                            });
+                        });
+                    };
+                    true;
+                    """
+        }
         let script = WKUserScript(source: stubScript, injectionTime: .atDocumentStart, forMainFrameOnly: false)
         webView?.configuration.userContentController.addUserScript(script)
     }
 
-    func call(_ method: String, args: [Any], promise: String) {
+    func call(_ method: String, args: [Any], promise: String, promisifyCallback: Bool) {
         if let callable = bindings[method] {
             do {
                 // walk args, converting callbacks into Callables
-                let args = args.map { arg -> Any in
+                var args = args.map { arg -> Any in
                     switch arg {
                     case let dict as NSDictionary:
                         if let callbackId = dict["callbackId"] as? String {
-                            return Callback(webView: webView!, callbackId: callbackId)
+                            if promisifyCallback {
+                                fatalError("Trailing closure that is promsified can not have callback ID")
+                            } else {
+                                return Callback(webView: webView!, callbackId: callbackId)
+                            }
                         } else {
                             print("non-callback dictionary")
                         }
@@ -97,50 +141,55 @@ public class Connection<C>: Binder {
                     }
                     return arg
                 }
-                let rawResult = try callable.call(args: args)
-                if rawResult is NSArray || rawResult is NSDictionary {
-                    resolvePromise(promiseId: promise, result: rawResult)
-                } else {
-                    var result: EncodableValue
-                    if type(of: rawResult) == Void.self {
-                        result = .void
-                    } else if let encodable = rawResult as? Encodable {
-                        result = .value(encodable)
+                if promisifyCallback {
+                    args.append(Callback(webView: webView!, callbackId: promise))
+                }
+                let rawResult = try callable.call(args: args, forPromisifiedClosure: promisifyCallback)
+                if !promisifyCallback {
+                    if rawResult is NSArray || rawResult is NSDictionary {
+                        webView?.resolvePromise(promiseId: promise, result: rawResult)
                     } else {
-                        throw ParameterError.conversion
+                        var result: EncodableValue
+                        if type(of: rawResult) == Void.self {
+                            result = .void
+                        } else if let encodable = rawResult as? Encodable {
+                            result = .value(encodable)
+                        } else {
+                            throw ParameterError.conversion
+                        }
+                        webView?.resolvePromise(promiseId: promise, result: result)
                     }
-                    resolvePromise(promiseId: promise, result: result)
                 }
             } catch {
-                rejectPromise(promiseId: promise, error: error)
+                webView?.rejectPromise(promiseId: promise, error: error)
             }
         }
     }
 
-    private func resolvePromise(promiseId: String, result: Any) {
-        var resultString = ""
-        if result is NSArray || result is NSDictionary {
-            // swiftlint:disable:next force_try
-            let data = try! JSONSerialization.data(withJSONObject: result, options: [])
-            resultString = String(data: data, encoding: String.Encoding.utf8)!
-            webView?.evaluateJavaScript("nimbus.resolvePromise('\(promiseId)', \(resultString));")
-        } else {
-            switch result {
-            case is ():
-                resultString = "undefined"
-            case let value as EncodableValue:
-                // swiftlint:disable:next force_try
-                resultString = try! String(data: JSONEncoder().encode(value), encoding: .utf8)!
-            default:
-                fatalError("Unsupported return type \(type(of: result))")
-            }
-            webView?.evaluateJavaScript("nimbus.resolvePromise('\(promiseId)', \(resultString).v);")
-        }
-    }
-
-    private func rejectPromise(promiseId: String, error: Error) {
-        webView?.evaluateJavaScript("nimbus.resolvePromise('\(promiseId)', undefined, '\(error)');")
-    }
+//    private func resolvePromise(promiseId: String, result: Any) {
+//        var resultString = ""
+//        if result is NSArray || result is NSDictionary {
+//            // swiftlint:disable:next force_try
+//            let data = try! JSONSerialization.data(withJSONObject: result, options: [])
+//            resultString = String(data: data, encoding: String.Encoding.utf8)!
+//            webView?.evaluateJavaScript("nimbus.resolvePromise('\(promiseId)', \(resultString));")
+//        } else {
+//            switch result {
+//            case is ():
+//                resultString = "undefined"
+//            case let value as EncodableValue:
+//                // swiftlint:disable:next force_try
+//                resultString = try! String(data: JSONEncoder().encode(value), encoding: .utf8)!
+//            default:
+//                fatalError("Unsupported return type \(type(of: result))")
+//            }
+//            webView?.evaluateJavaScript("nimbus.resolvePromise('\(promiseId)', \(resultString).v);")
+//        }
+//    }
+//
+//    private func rejectPromise(promiseId: String, error: Error) {
+//        webView?.evaluateJavaScript("nimbus.resolvePromise('\(promiseId)', undefined, '\(error)');")
+//    }
 
     public let target: C
     private let namespace: String

@@ -60,6 +60,10 @@ public class DeviceExtension {
         return deviceInfo
     }
 
+    func callbackWithSinglePrimitiveParam(closure: (Int) -> Void) {
+        closure(999)
+    }
+
     let deviceInfo = DeviceInfo()
 }
 
@@ -67,5 +71,6 @@ extension DeviceExtension: NimbusExtension {
     public func bindToWebView(webView: WKWebView) {
         let connection = webView.addConnection(to: self, as: "DeviceExtension")
         connection.bind(DeviceExtension.getDeviceInfo, as: "getDeviceInfo")
+        connection.bind(DeviceExtension.callbackWithSinglePrimitiveParam, as: "callbackWithSinglePrimitiveParam", closureTransform: .promise)
     }
 }

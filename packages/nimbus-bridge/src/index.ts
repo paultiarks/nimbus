@@ -59,22 +59,51 @@ class Nimbus {
 
   public promisify = (src: any) => {
     let dest: any = {};
+
+    let aaa = "";
+    if (src['getMethodsWithClosuresToPromisify'] !== undefined) {
+      aaa = src.getMethodsWithClosuresToPromisify.call(src)
+    }
+
+    let bbb = aaa.split(',');
+    console.log('ccc');
+    console.log(bbb);
     Object.keys(src).forEach(key => {
       let func = src[key];
-      dest[key] = (...args: any[]) => {
-        args = this.cloneArguments(args);
-        args = args.map(arg => {
-          if (typeof arg === "object") {
-            return JSON.stringify(arg);
-          }
-          return arg;
-        });
-        let result = func.call(src, ...args);
-        if (result !== undefined) {
-          result = JSON.parse(result);
+      if (key === "getMethodsWithClosuresToPromisify") {
+        dest[key] = (...args: any[]) => {
+          return func.call(src, ...args);
+        };
+      } else {
+        if (bbb.includes(key)) {
+          dest[key] = (...args: any[]) => {
+            let functionArgs = nimbus.cloneArguments(args);
+            return new Promise(function (resolve, reject) {
+              var promiseId = nimbus.uuidv4();
+              nimbus.promises[promiseId] = { resolve, reject };
+
+              func.call(src, ...functionArgs, promiseId);
+            });
+          };
         }
-        return Promise.resolve(result);
-      };
+        else {
+          dest[key] = (...args: any[]) => {
+            args = this.cloneArguments(args);
+            args = args.map(arg => {
+              if (typeof arg === "object") {
+                return JSON.stringify(arg);
+              }
+              return arg;
+            });
+
+            let result = func.call(src, ...args);
+            if (result !== undefined) {
+              result = JSON.parse(result);
+            }
+            return Promise.resolve(result);
+          };
+        }
+      }
     });
     return dest;
   };

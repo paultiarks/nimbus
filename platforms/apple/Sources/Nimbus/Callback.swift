@@ -28,38 +28,43 @@ class Callback: Callable {
         }
     }
 
-    func call(args: [Any]) throws -> Any {
-        let jsonEncoder = JSONEncoder()
-        let jsonArgs = try args.map { arg -> String in
-            if let encodable = arg as? Encodable {
-                let jsonData = try jsonEncoder.encode(EncodableValue.value(encodable))
-                let jsonString = String(data: jsonData, encoding: .utf8)!
-                return jsonString
-            } else if arg is NSArray || arg is NSDictionary {
-                let data = try JSONSerialization.data(withJSONObject: arg, options: [])
-                let jsonString = String(data: data, encoding: String.Encoding.utf8)!
-                return jsonString
-            } else {
-                // Parameters passed to callback are implied that they
-                // conform to Encodable protocol or be either NSArray or NSDictionary.
-                // If for some reason any elements don't throw parameter error.
-                throw ParameterError.conversion
+    func call(args: [Any], forPromisifiedClosure: Bool) throws -> Any {
+        if forPromisifiedClosure {
+            //self.webView?.resolvePromise(promiseId: self.callbackId, result: formattedJsonArgs)
+            self.webView?.resolvePromise(promiseId: self.callbackId, result: args)
+        } else {
+            let jsonEncoder = JSONEncoder()
+            let jsonArgs = try args.map { arg -> String in
+                if let encodable = arg as? Encodable {
+                    let jsonData = try jsonEncoder.encode(EncodableValue.value(encodable))
+                    let jsonString = String(data: jsonData, encoding: .utf8)!
+                    return jsonString
+                } else if arg is NSArray || arg is NSDictionary {
+                    let data = try JSONSerialization.data(withJSONObject: arg, options: [])
+                    let jsonString = String(data: data, encoding: String.Encoding.utf8)!
+                    return jsonString
+                } else {
+                    // Parameters passed to callback are implied that they
+                    // conform to Encodable protocol or be either NSArray or NSDictionary.
+                    // If for some reason any elements don't throw parameter error.
+                    throw ParameterError.conversion
+                }
             }
-        }
-        let formattedJsonArgs = String(format: "[%@]", jsonArgs.joined(separator: ","))
-
-        DispatchQueue.main.async {
-            self.webView?.evaluateJavaScript("""
-                var jsonArgs = \(formattedJsonArgs);
-                var mappedJsonArgs = jsonArgs.map(element => {
-                  if (element.hasOwnProperty('v')) {
-                    return element.v;
-                  } else {
-                    return element;
-                  }
-                });
-                nimbus.callCallback('\(self.callbackId)', mappedJsonArgs);
-            """)
+            let formattedJsonArgs = String(format: "[%@]", jsonArgs.joined(separator: ","))
+            
+            DispatchQueue.main.async {
+                self.webView?.evaluateJavaScript("""
+                    var jsonArgs = \(formattedJsonArgs);
+                    var mappedJsonArgs = jsonArgs.map(element => {
+                      if (element.hasOwnProperty('v')) {
+                        return element.v;
+                      } else {
+                        return element;
+                      }
+                    });
+                    nimbus.callCallback('\(self.callbackId)', mappedJsonArgs);
+                """)
+            }
         }
         return ()
     }
